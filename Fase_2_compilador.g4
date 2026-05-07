@@ -1,14 +1,19 @@
 //simbolos//
-Lexer grammar PythonLexer;
+lexer grammar PythonLexer;
+
 //Operadores Aritméticos//
 PLUS: '+' ;
 MINUS: '-' ;
-MUl: '*';
+MUL: '*';
 DIV: '/';
 FLOORDIV: '//';
 MOD: '%';
 POW: '**';
 MATMUL: '@';
+
+// Parenteses//
+LPAREN: '(' ;
+RPAREN: ')' ;
 
 //Operadores Comparação//
 EQUAL: '==';
@@ -103,6 +108,11 @@ ASYNC: 'async';
 AWAIT: 'await';
 
 
+NUMBER : DIGIT+ ;
+NEWLINE : [\r\n]+ ;
+
+// --- REGRAS FINAIS
+
 // Identificadores 
 IDENTIFIER : LETTER (LETTER | DIGIT)* ;
 
@@ -113,4 +123,4 @@ fragment LETTER : [a-zA-Z_] ;
 fragment DIGIT : [0-9] ;
 
 // Espaços em branco 
-WS : [ \t\r\n]+ -> skip ;
+WS : [ \t]+ -> skip ;
