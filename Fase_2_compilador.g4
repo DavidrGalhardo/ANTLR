@@ -1,5 +1,5 @@
 //simbolos//
-lexer grammar PythonLexer;
+lexer grammar Fase_2_compilador;
 
 //Operadores Aritméticos//
 PLUS: '+' ;
@@ -14,6 +14,10 @@ MATMUL: '@';
 // Parenteses//
 LPAREN: '(' ;
 RPAREN: ')' ;
+SEMICOLON : ';' ;
+COMMA     : ',' ;
+LBRACE    : '{' ;
+RBRACE    : '}' ;
 
 //Operadores Comparação//
 EQUAL: '==';
@@ -107,8 +111,9 @@ YIELD: 'yield';
 ASYNC: 'async';
 AWAIT: 'await';
 
-
-NUMBER : DIGIT+ ;
+NUMBER: INT_NUM | FLOAT_NUM;
+fragment INT_NUM : DIGIT+ ;
+fragment FLOAT_NUM : [0-9]+ '.' [0-9]+ ([eE] [+-]? [0-9]+)?;
 NEWLINE : [\r\n]+ ;
 
 // --- REGRAS FINAIS
