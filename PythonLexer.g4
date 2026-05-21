@@ -14,6 +14,7 @@ MATMUL: '@';
 // Parenteses//
 LPAREN: '(' ;
 RPAREN: ')' ;
+COMNA: ':' ;
 SEMICOLON : ';' ;
 COMMA     : ',' ;
 LBRACE    : '{' ;
