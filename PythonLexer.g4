@@ -15,6 +15,7 @@ MATMUL: '@';
 LPAREN: '(' ;
 RPAREN: ')' ;
 SEMICOLON: ';' ;
+COLON: ':' ;
 COMMA: ',' ;
 LBRACE: '{' ;
 RBRACE: '}' ;
