@@ -14,11 +14,10 @@ MATMUL: '@';
 // Parenteses//
 LPAREN: '(' ;
 RPAREN: ')' ;
-COMNA: ':' ;
-SEMICOLON : ';' ;
-COMMA     : ',' ;
-LBRACE    : '{' ;
-RBRACE    : '}' ;
+SEMICOLON: ';' ;
+COMMA: ',' ;
+LBRACE: '{' ;
+RBRACE: '}' ;
 
 //Operadores Comparação//
 EQUAL: '==';
@@ -116,16 +115,14 @@ AWAIT: 'await';
 
 
 NUMBER: INT_NUM | FLOAT_NUM;
-fragment INT_NUM : [-]? DIGIT+ ;
-fragment FLOAT_NUM : [-]?  [0-9]+ '.' [0-9]+ ([eE] [+-]? [0-9]+)?;
-BLANK : ' ';
-TAB : '\t';
-NEWLINE : [\n]+ ;
+fragment INT_NUM: [-]? DIGIT+ ;
+fragment FLOAT_NUM: [-]?  [0-9]+ '.' [0-9]+ ([eE] [+-]? [0-9]+)?;
+BLANK: ' ';
+TAB: '\t';
+NEWLINE: [\n]+ ;
 
-IDENTIFIER : LETTER (LETTER | DIGIT)* ;
+IDENTIFIER: LETTER (LETTER | DIGIT)* ;
 
-fragment LETTER : [a-zA-Z_] ;
+fragment LETTER: [a-zA-Z_] ;
 
-fragment DIGIT : [0-9] ;
-
-WS : [\r\f]+ -> skip;
+fragment DIGIT: [0-9] ;
