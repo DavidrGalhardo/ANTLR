@@ -1,14 +1,14 @@
 //simbolos//
-lexer grammar Fase_2_compilador;
+lexer grammar PythonLexer;
 
 //Operadores Aritméticos//
 PLUS: '+' ;
 MINUS: '-' ;
+POW: '**';
 MUL: '*';
 DIV: '/';
 FLOORDIV: '//';
 MOD: '%';
-POW: '**';
 MATMUL: '@';
 
 // Parenteses//
@@ -22,10 +22,10 @@ RBRACE    : '}' ;
 //Operadores Comparação//
 EQUAL: '==';
 NEQUAL: '!=';
-GT: '>';
 GE: '>=';
-MN: '<';
+GT: '>';
 ME: '<=';
+MN: '<';
 
 // operadores bit a bit//
 AND_E: '&';
@@ -56,6 +56,8 @@ ASSIGN_WALRUS: ':=';
 AND: 'and';
 OR: 'or';
 NOT: 'not';
+TRUE: 'True';
+FALSE: 'False';
 IF: 'if';
 ELIF: 'elif';
 ELSE: 'else';
@@ -111,21 +113,18 @@ YIELD: 'yield';
 ASYNC: 'async';
 AWAIT: 'await';
 
+
 NUMBER: INT_NUM | FLOAT_NUM;
-fragment INT_NUM : DIGIT+ ;
-fragment FLOAT_NUM : [0-9]+ '.' [0-9]+ ([eE] [+-]? [0-9]+)?;
-NEWLINE : [\r\n]+ ;
+fragment INT_NUM : [-]? DIGIT+ ;
+fragment FLOAT_NUM : [-]?  [0-9]+ '.' [0-9]+ ([eE] [+-]? [0-9]+)?;
+BLANK : ' ';
+TAB : '\t';
+NEWLINE : [\n]+ ;
 
-// --- REGRAS FINAIS
-
-// Identificadores 
 IDENTIFIER : LETTER (LETTER | DIGIT)* ;
 
-// Letras 
 fragment LETTER : [a-zA-Z_] ;
 
-// Dígitos
 fragment DIGIT : [0-9] ;
 
-// Espaços em branco 
-WS : [ \t]+ -> skip ;
+WS : [\r\f]+ -> skip;
