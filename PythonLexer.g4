@@ -14,7 +14,7 @@ MATMUL: '@';
 // Parenteses//
 LPAREN: '(' ;
 RPAREN: ')' ;
-SEMICOLON: ';' ;
+SEMICOLON : ';' ;
 COLON: ':' ;
 COMMA: ',' ;
 LBRACE: '{' ;
@@ -114,10 +114,10 @@ YIELD: 'yield';
 ASYNC: 'async';
 AWAIT: 'await';
 
-
-NUMBER: INT_NUM | FLOAT_NUM;
-fragment INT_NUM : [-]? DIGIT+ ;
-fragment FLOAT_NUM : [-]?  [0-9]+ '.' [0-9]+ ([eE] [+-]? [0-9]+)?;
+NUMBER: COMPLEX | FLOAT_NUM |INT_NUM ;
+fragment COMPLEX : ((INT_NUM|FLOAT_NUM) [+-])? (INT_NUM|FLOAT_NUM) [jJ];
+fragment INT_NUM : [-]? DIGIT+;
+fragment FLOAT_NUM : [-]?  [0-9]* '.' [0-9]+ ([eE] [+-]? [0-9]+)?;
 BLANK : ' ';
 TAB : '\t';
 NEWLINE : [\n]+ ;
