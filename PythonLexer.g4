@@ -73,15 +73,7 @@ TRY: 'try';
 EXCEPT: 'except';
 FINALLY: 'finally';
 WITH: 'with';
-INT: 'int';
-FLOAT: 'float';
-BOOL: 'bool';
-STR: 'str';
-LIST: 'list';
-TUPLE: 'tuple';
-DICT: 'dict';
-SET: 'set';
-NONE: 'None';
+
 PRINT: 'print';
 INPUT: 'input';
 LEN: 'len';
@@ -114,10 +106,25 @@ YIELD: 'yield';
 ASYNC: 'async';
 AWAIT: 'await';
 
-NUMBER: COMPLEX | FLOAT_NUM |INT_NUM ;
-fragment COMPLEX : ((INT_NUM|FLOAT_NUM) [+-])? (INT_NUM|FLOAT_NUM) [jJ];
+TYPES: INT | FLOAT | COMPLEX | BOOL | STR | LIST | TUPLE | DICT | SET | NONE;
+fragment INT: 'int';
+fragment FLOAT: 'float';
+fragment BOOL: 'bool';
+fragment STR: 'str';
+fragment LIST: 'list';
+fragment TUPLE: 'tuple';
+fragment DICT: 'dict';
+fragment SET: 'set';
+fragment NONE: 'None';
+fragment COMPLEX: 'compex';
+
+NUMBER: COMPLEX_NUM | FLOAT_NUM |INT_NUM ;
+fragment COMPLEX_NUM : ((INT_NUM|FLOAT_NUM) [+-])? (INT_NUM|FLOAT_NUM) [jJ];
 fragment INT_NUM : [-]? DIGIT+;
-fragment FLOAT_NUM : [-]?  [0-9]* '.' [0-9]+ ([eE] [+-]? [0-9]+)?;
+fragment FLOAT_NUM : 
+    [-]?DIGIT+ '.' DIGIT* ([eE] [+-]? DIGIT+)?
+    | '.' DIGIT+ ([eE] [+-]? DIGIT+)?
+    ;
 BLANK : ' ';
 TAB : '\t';
 NEWLINE : [\n]+ ;
