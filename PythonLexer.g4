@@ -73,22 +73,6 @@ TRY: 'try';
 EXCEPT: 'except';
 FINALLY: 'finally';
 WITH: 'with';
-//PRINT: 'print';//
-INPUT: 'input';
-//LEN: 'len';//
-TYPE: 'type';
-//RANGE: 'range';//
-SUM: 'sum';
-MIN: 'min';
-MAX: 'max';
-ABS: 'abs';
-ROUND: 'round';
-SORTED: 'sorted';
-ENUMERATE: 'enumerate';
-//ZIP: 'zip';//
-MAP: 'map';
-FILTER: 'filter';
-OPEN: 'open';
 IMPORT: 'import';
 FROM: 'from';
 AS: 'as';
@@ -104,6 +88,24 @@ DEL: 'del';
 YIELD: 'yield';
 ASYNC: 'async';
 AWAIT: 'await';
+
+KEYWORD_FUNC: PRINT | INPUT | LEN | RANGE | SUM | MIN | MAX | ABS | ROUND | SORTED | ENUMERATE | ZIP | MAP | FILTER | OPEN;
+fragment PRINT: 'print';
+fragment INPUT: 'input';
+fragment LEN: 'len';
+fragment TYPE: 'type';
+fragment RANGE: 'range';
+fragment SUM: 'sum';
+fragment MIN: 'min';
+fragment MAX: 'max';
+fragment ABS: 'abs';
+fragment ROUND: 'round';
+fragment SORTED: 'sorted';
+fragment ENUMERATE: 'enumerate';
+fragment ZIP: 'zip';
+fragment MAP: 'map';
+fragment FILTER: 'filter';
+fragment OPEN: 'open';
 
 TYPES: INT | FLOAT | COMPLEX | BOOL | STR | LIST | TUPLE | DICT | SET | NONE;
 fragment INT: 'int';
