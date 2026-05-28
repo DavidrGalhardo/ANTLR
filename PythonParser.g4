@@ -3,12 +3,23 @@ parser grammar PythonParser;
 options { tokenVocab=PythonLexer; }
 
 code
-    : (stat | condicional | func | func_call)* EOF
+    : (stat)* EOF
     ;
 
 stat
-    : (expr | query | return_stat) NEWLINE
-    | condicional
+    : (expr | query | condicional | return_stat| break_stat | continue_stat | pass_stat | loop_for| loop_while| func) NEWLINE?
+    ;
+
+break_stat
+    : BREAK
+    ;
+
+continue_stat
+    : CONTINUE
+    ;
+
+pass_stat
+    : PASS
     ;
 
 return_stat
@@ -21,9 +32,28 @@ condicional
       (' '* ELSE ' '* ':' NEWLINE (' '* stat+))?
     ;
 
+loop_while
+    : WHILE ' '* query ' '* ':' NEWLINE
+      (' '* stat)+
+    ;
+
+loop_for
+    : FOR ' '* for_param_list
+      ' '* IN ' '*
+      func_call
+      ' '* ':'
+      NEWLINE
+      (' '* stat NEWLINE*)+
+    ;
+
+for_param_list
+    : param ( ',' ' '* param)*
+    ;
+
 func
     : DEF ' '* IDENTIFIER ' '*
       LPAREN param_list? RPAREN
+      (' '* '-''>' ' '* TYPES)?
       ':'
       NEWLINE
       (' '* stat)+
@@ -34,7 +64,7 @@ param_list
     ;
 
 param
-    : IDENTIFIER (':'TYPES)?('=' expr)?
+    : IDENTIFIER ' '* (':'' '*TYPES)?('=' ' '* expr)?
     ;
 
 func_call
@@ -47,7 +77,7 @@ arg_list
     ;
 
 expr
-    : IDENTIFIER
+    : '-'? IDENTIFIER
     | NUMBER
     | func_call
     | expr ' '* POW ' '* expr                                          
