@@ -73,12 +73,11 @@ TRY: 'try';
 EXCEPT: 'except';
 FINALLY: 'finally';
 WITH: 'with';
-
-PRINT: 'print';
+//PRINT: 'print';//
 INPUT: 'input';
-LEN: 'len';
+//LEN: 'len';//
 TYPE: 'type';
-RANGE: 'range';
+//RANGE: 'range';//
 SUM: 'sum';
 MIN: 'min';
 MAX: 'max';
@@ -86,7 +85,7 @@ ABS: 'abs';
 ROUND: 'round';
 SORTED: 'sorted';
 ENUMERATE: 'enumerate';
-ZIP: 'zip';
+//ZIP: 'zip';//
 MAP: 'map';
 FILTER: 'filter';
 OPEN: 'open';
