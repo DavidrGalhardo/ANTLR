@@ -119,6 +119,34 @@ fragment SET: 'set';
 fragment NONE: 'None';
 fragment COMPLEX: 'compex';
 
+STRING_STRUCTURE :
+    '"' (~["\r])* '"'
+    | '\'' (~['\r])* '\''
+    ;
+
+LIST_STRUCTURE : 
+    '[' ( ~[\r\n] )* ']'
+    ;
+
+TUPLE_STRUCTURE :
+    '(' ( ~[()\r\n] )* ')'
+    ;
+
+SET_STRUCTURE : 
+    '{'
+      (~[{}\r\n:])+ 
+      (',' (~[{}\r\n:])+ )*
+      '}'
+    ;
+
+DICT_STRUCTURE : 
+    '{'
+      ( ~[{}\r\n]+ ':' ~[\r\n]+ )
+      ( ',' ~[{}\r\n]+ ':' ~[\r\n]+ )*
+      '}'
+    ;
+
+
 NUMBER: COMPLEX_NUM | FLOAT_NUM |INT_NUM ;
 fragment COMPLEX_NUM : ((INT_NUM|FLOAT_NUM) [+-])? (INT_NUM|FLOAT_NUM) [jJ];
 fragment INT_NUM : [-]? DIGIT+;
