@@ -40,7 +40,7 @@ loop_while
 loop_for
     : FOR ' '* for_param_list
       ' '* IN ' '*
-      func_call
+      (func_call|keywordfunc_call)
       ' '* ':'
       NEWLINE
       (' '* stat NEWLINE*)+
@@ -59,6 +59,11 @@ func
       (' '* stat)+
     ;
 
+func_call
+    : IDENTIFIER
+      LPAREN ' '* arg_list? ' '* RPAREN
+    ;
+
 param_list
     : param ( ',' ' '* param)*
     ;
@@ -67,9 +72,11 @@ param
     : IDENTIFIER ' '* (':'' '*TYPES)?('=' ' '* expr)?
     ;
 
-func_call
-    : IDENTIFIER
-      LPAREN ' '* arg_list? ' '* RPAREN
+
+keywordfunc_call
+    :
+    KEYWORD_FUNC
+    LPAREN ' '* arg_list? ' '* RPAREN
     ;
 
 arg_list
@@ -77,9 +84,15 @@ arg_list
     ;
 
 expr
-    : '-'? IDENTIFIER
+    : func_call
+    |'-'? IDENTIFIER
     | NUMBER
-    | func_call
+    | STRING_STRUCTURE
+    | LIST_STRUCTURE
+    | TUPLE_STRUCTURE
+    | DICT_STRUCTURE
+    | SET_STRUCTURE
+    | keywordfunc_call
     | expr ' '* POW ' '* expr                                          
     | expr ' '* (MUL | DIV | FLOORDIV | MOD | MATMUL) ' '* expr       
     | expr ' '* (PLUS | MINUS) ' '* expr                            
