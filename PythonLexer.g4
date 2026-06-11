@@ -129,7 +129,7 @@ LIST_STRUCTURE :
     ;
 
 TUPLE_STRUCTURE :
-    '(' ( ~[()\r\n] )* ')'
+    '(' ( ~[()\r\n] )* ',' ')'
     ;
 
 SET_STRUCTURE : 
